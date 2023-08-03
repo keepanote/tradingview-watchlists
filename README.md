@@ -11,3 +11,6 @@
 | FTX | ![FTX](https://github.com/oktrader/tradingview-watchlists/workflows/FTX/badge.svg) |
 | Huobi | ![Huobi](https://github.com/oktrader/tradingview-watchlists/workflows/Huobi/badge.svg) |
 | Stocks | ![Stocks](https://github.com/oktrader/tradingview-watchlists/workflows/Stocks/badge.svg) |
+
+Workflow file for this run：
+.github/workflows/
