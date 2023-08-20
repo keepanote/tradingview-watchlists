@@ -1,5 +1,6 @@
 import argparse
 import requests
+import re
 
 parser = argparse.ArgumentParser(description='Gateio tickers')
 parser.add_argument('-m', '--margin', action='store_true')
@@ -19,6 +20,10 @@ if __name__ == "__main__":
         #     # 全仓杠杆支持的币种列表
         #     symbols = filter(lambda x: x['status'] == 1, requests.get('https://api.gateio.ws/api/v4/margin/cross/currencies').json())
         if args.quote_asset:
-            symbols = filter(lambda x: x['quote'] == args.quote_asset and not ("3S" in x['base'] or "5S" in x['base'] or "3L" in x['base'] or "5L" in x['base']), symbols)
+            blacklist = r"3S|5S|3L|5L"
+            symbols = filter(lambda x: 
+                 x['quote'] == args.quote_asset and 
+                 not re.search(blacklist, x['base']),
+                 symbols)
         symbols = map(lambda x: 'GATEIO:{}'.format(x['id'].replace('_', '')), symbols)
         print(',\n'.join(sorted(symbols)))

@@ -1,5 +1,6 @@
 import argparse
 import requests
+import re
 
 parser = argparse.ArgumentParser(description='MEXC tickers')
 parser.add_argument('-f', '--futures', action='store_true')
@@ -15,6 +16,14 @@ if __name__ == "__main__":
     else:
         symbols = filter(lambda x: x['status'] == 'ENABLED', requests.get('https://api.mexc.com/api/v3/exchangeInfo').json()['symbols'])
         if args.quote_asset:
-            symbols = filter(lambda x: x['quoteAsset'] == args.quote_asset, symbols)
+            blacklist = r"3S|5S|3L|5L"
+            # symbols = filter(lambda x: 
+            #      x['quoteAsset'] == args.quote_asset and
+            #      not any(s in x['baseAsset'] for s in ["3S","5S","3L","5L"]), 
+            #      symbols)
+            symbols = filter(lambda x: 
+                 x['quoteAsset'] == args.quote_asset and 
+                 not re.search(blacklist, x['baseAsset']),
+                 symbols)
         symbols = map(lambda x: 'MEXC:{}'.format(x['symbol']), symbols)
         print(',\n'.join(sorted(symbols)))
