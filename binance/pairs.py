@@ -11,7 +11,8 @@ if __name__ == "__main__":
 
     if args.futures:
         symbols = requests.get('https://fapi.binance.com/fapi/v1/exchangeInfo').json()['symbols']
-        symbols = map(lambda x: 'BINANCE:{}PERP'.format(x['symbol']), symbols)
+        symbols = filter(lambda x: 'BUSD' not in x['quoteAsset'], symbols)
+        symbols = map(lambda x: 'BINANCE:{}.P'.format(x['symbol']), symbols)
         print(',\n'.join(sorted(symbols)))
     else:
         symbols = filter(lambda x: x['status'] == 'TRADING', requests.get('https://api.binance.com/api/v1/exchangeInfo').json()['symbols'])
