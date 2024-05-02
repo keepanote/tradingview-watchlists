@@ -9,7 +9,9 @@
 | CME | ![CME](https://github.com/oktrader/tradingview-watchlists/workflows/CME/badge.svg) |
 | Forex | ![Forex](https://github.com/oktrader/tradingview-watchlists/workflows/FX/badge.svg) |
 | FTX | ![FTX](https://github.com/oktrader/tradingview-watchlists/workflows/FTX/badge.svg) |
+| GateIO | ![GateIO](https://github.com/oktrader/tradingview-watchlists/workflows/GateIO/badge.svg) |
 | Huobi | ![Huobi](https://github.com/oktrader/tradingview-watchlists/workflows/Huobi/badge.svg) |
+| Okx | ![Okx](https://github.com/oktrader/tradingview-watchlists/workflows/Okx/badge.svg) |
 | Stocks | ![Stocks](https://github.com/oktrader/tradingview-watchlists/workflows/Stocks/badge.svg) |
 
 Workflow file for this run：
